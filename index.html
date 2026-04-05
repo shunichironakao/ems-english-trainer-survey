@@ -274,9 +274,10 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 .thanks-icon{font-size:3.5rem;margin-bottom:16px}
 .thanks-title{color:#fff;font-size:1.5rem;font-weight:700;margin-bottom:8px}
 .thanks-sub{color:#93c5fd;font-size:.88rem;margin-bottom:28px;line-height:1.6}
-.thanks-csv-box{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);border-radius:14px;padding:18px 20px;margin-bottom:24px;width:100%;max-width:380px}
-.thanks-csv-box p{color:#e0f2fe;font-size:.78rem;margin-bottom:12px;line-height:1.5}
-.btn-csv{background:#fff;color:#1a3a5c;border:none;border-radius:10px;padding:11px 24px;font-size:.88rem;font-weight:700;cursor:pointer;width:100%}
+.thanks-csv-box{margin-top:32px;padding:8px 0;text-align:center;opacity:.35}
+.thanks-csv-box:hover{opacity:.6}
+.thanks-csv-box p{color:#cbd5e1;font-size:.65rem;margin-bottom:6px;line-height:1.4}
+.btn-csv{background:transparent;color:#94a3b8;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:5px 14px;font-size:.65rem;font-weight:500;cursor:pointer}
 .btn-thanks-home{background:transparent;border:2px solid rgba(255,255,255,.5);color:#fff;border-radius:10px;padding:11px 24px;font-size:.88rem;font-weight:600;cursor:pointer;width:100%;max-width:380px}
 /* Word-level breakdown */
 .breakdown-label{font-size:.72rem;color:#9ca3af;margin-top:8px;text-align:center;letter-spacing:.3px}
@@ -692,11 +693,11 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
   <div class="thanks-icon">🙏</div>
   <h2 class="thanks-title">ご回答ありがとうございました</h2>
   <p class="thanks-sub">いただいたフィードバックはアプリの改善と<br>研究の発展に活用させていただきます。</p>
-  <div class="thanks-csv-box">
-    <p>📥 研究担当者の方へ：下のボタンからこの端末に蓄積された全回答データをCSVとしてダウンロードできます。</p>
-    <button class="btn-csv" onclick="downloadCSV()">📊 回答データをCSVでダウンロード</button>
-  </div>
   <button class="btn-thanks-home" onclick="showSelect()">📋 別の症候でトレーニングを続ける</button>
+  <div class="thanks-csv-box">
+    <p>📥 研究担当者の方へ：この端末に蓄積された全回答データをCSVとしてダウンロードできます。</p>
+    <button class="btn-csv" onclick="downloadCSV()">📊 CSVダウンロード</button>
+  </div>
 </div>
 
 <script>
