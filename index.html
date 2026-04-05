@@ -543,7 +543,7 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     <button class="btn-home" onclick="showSelect()">📋 別の症候を選ぶ</button>
   </div>
   <div style="margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.12);border-radius:12px;text-align:center">
-    <p style="color:#93c5fd;font-size:.78rem;margin-bottom:10px">📋 引き続き簡単なアンケートにご協力ください（約1分）</p>
+    <p style="color:#93c5fd;font-size:.78rem;margin-bottom:10px">📋 引き続き簡単なアンケートにご協力をお願いします（無記名・約1分）</p>
     <div id="survey-countdown" style="color:#fff;font-size:.85rem;font-weight:600;margin-bottom:8px"></div>
     <button onclick="showSurvey()" style="background:#fff;color:#1a3a5c;border:none;border-radius:10px;padding:10px 28px;font-size:.9rem;font-weight:700;cursor:pointer">アンケートに答える →</button>
     <button onclick="skipSurvey()" style="background:transparent;border:none;color:#93c5fd;font-size:.75rem;cursor:pointer;display:block;margin:8px auto 0;text-decoration:underline">スキップ</button>
@@ -553,8 +553,13 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 <!-- ===================== SURVEY ===================== -->
 <div id="screen-survey" class="screen">
   <div class="survey-header">
-    <h2>📋 使用感アンケート</h2>
-    <p>EMS English Trainer [PROTOTYPE] の改善にご協力ください</p>
+    <h2>📋 使用感アンケートにご協力ください</h2>
+    <p>EMS English Trainer [PROTOTYPE] の改善・研究のためのアンケートです</p>
+  </div>
+  <div style="background:rgba(255,255,255,.13);border-radius:12px;padding:12px 16px;margin-bottom:14px;font-size:.78rem;color:#e0f2fe;line-height:1.7">
+    ・本アンケートは<strong style="color:#fff">無記名</strong>です。個人が特定される情報は収集しません。<br>
+    ・回答結果は学会発表・論文等の研究目的に使用させていただく場合があります。<br>
+    ・回答は任意です。いつでもスキップできます。
   </div>
   <div class="survey-progress">
     <div class="survey-progress-bar"><div class="survey-progress-fill" id="survey-prog-fill" style="width:0%"></div></div>
