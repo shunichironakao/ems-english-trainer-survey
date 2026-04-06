@@ -4,8 +4,6 @@
 
 🌐 **GitHub Pages（公開URL）**: https://shunichironakao.github.io/ems-english-trainer-survey/
 
-🔗 **アンケートなし版はこちら**: [ems-english-trainer-prototype](https://github.com/shunichironakao/ems-english-trainer-prototype)
-
 ---
 
 ## 概要
@@ -107,7 +105,7 @@
 
 ## 作成者
 
-**Shunichiro Nakao, MD, MD, MSc, PhD**
+**Shunichiro Nakao, MD, MSc, PhD**
 
 This project was supported by a grant from The Mitsubishi Foundation.
 
