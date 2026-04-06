@@ -107,6 +107,8 @@
 
 **Shunichiro Nakao, MD, MSc, PhD**
 
+Department of Traumatology and Acute Critical Medicine, The University of Osaka
+
 This project was supported by a grant from The Mitsubishi Foundation.
 
 ## ライセンス
