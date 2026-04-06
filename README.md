@@ -1,0 +1,117 @@
+# EMS English Trainer [PROTOTYPE] — アンケートあり版
+
+救急英語スピーキングトレーナー（使用感アンケート付き）— コーパス分析に基づく救急隊員向け英語発話練習アプリ
+
+🌐 **GitHub Pages（公開URL）**: https://shunichironakao.github.io/ems-english-trainer-survey/
+
+🔗 **アンケートなし版はこちら**: [ems-english-trainer-prototype](https://github.com/shunichironakao/ems-english-trainer-prototype)
+
+---
+
+## 概要
+
+本アプリは、救急現場で外国語対応が必要な救急隊員を対象とした、英語スピーキング練習ツールです。コーパス言語学の手法（共起分析・Effectスコア）で選出した、臨床的根拠のある英語表現を、Web Speech APIによるリアルタイム音声認識で練習できます。
+
+**本バージョンは研究用アンケートを搭載しています。** 1症候のトレーニング完了後、使用感に関する5段階評価アンケート（6項目 + 属性2項目）が自動的に表示されます。
+
+## 主な機能
+
+- 🎤 **音声認識**：Web Speech APIによるリアルタイム認識（完全一致不要・キーワードマッチング）
+- 🔊 **患者返答の音声合成**：認識成功後、北米英語音声（Samantha / Zira等）で患者役AIが返答
+- 🔤 **単語別フィードバック**：発話後、各単語の認識可否を緑（✓）・赤（✗）で即時表示
+- 📈 **苦手単語の自動集計**：完了画面でセッション中の未認識単語をバーグラフで表示
+- 🏥 **10症候対応**：救急現場で頻度の高い10症候をカバー
+- 📋 **8フェーズ構成**：初期接触から搬送告知まで現場の流れを再現
+- 📝 **使用感アンケート**：トレーニング完了後に5段階Likertスケールで自動表示
+- 💾 **回答データのCSV出力**：蓄積した回答データをCSVでダウンロード可能（研究担当者用）
+- 📱 **レスポンシブ対応**：PC・タブレット・スマートフォン（Android/Chrome）で動作
+
+## 対応症候
+
+| # | 症候（日本語） | Chief Complaint |
+|---|---|---|
+| 1 | 胸痛 | Chest Pain 🫀 |
+| 2 | 呼吸困難 | Respiratory Distress 🫁 |
+| 3 | めまい | Dizziness 💫 |
+| 4 | 頭痛 | Headache 🧠 |
+| 5 | 背部痛 | Back Pain 🦴 |
+| 6 | 意識障害 | Altered Consciousness 🧍 |
+| 7 | 腹痛 | Abdominal Pain 🫃 |
+| 8 | 嘔気嘔吐 | Nausea & Vomiting 🤢 |
+| 9 | 脱力 | Weakness 💪 |
+| 10 | 全身倦怠感 | General Fatigue 😩 |
+
+## アンケートについて
+
+### 構成
+
+| 項目 | 内容 | 尺度 |
+|---|---|---|
+| Q1 | 操作のしやすさ（使いやすさ） | 5段階Likert |
+| Q2 | 救急英語学習への有用性 | 5段階Likert |
+| Q3 | 収録表現の臨床的妥当性 | 5段階Likert |
+| Q4 | 音声認識フィードバックの有用性 | 5段階Likert |
+| Q5 | 今後も使いたいか（継続意向） | 5段階Likert |
+| Q6 | 同僚への推薦意向 | 5段階Likert |
+| D1 | 職種（医師 / 救急救命士 / 看護師 / その他） | 選択式 |
+| D2 | 英語経験（4択） | 選択式 |
+| 自由記述 | ご意見・ご感想 | テキスト |
+
+### 倫理的配慮
+
+- 本アンケートは**無記名**です。個人が特定される情報は収集しません。
+- 回答結果は学会発表・論文等の研究目的に使用させていただく場合があります。
+- 回答は任意です。
+
+### データの取り扱い
+
+- 回答データはブラウザの`localStorage`にのみ保存されます。
+- サーバーへのデータ送信は行いません。
+- 研究担当者がCSVとしてダウンロードできます。
+
+## トレーニングフェーズ（全症候共通）
+
+各症候につき以下の8フェーズを順番に練習します：
+
+1. **Initial Contact** — 初期接触
+2. **Chief Complaint** — 主訴聴取
+3. **Pain Assessment** — 痛み評価
+4. **SAMPLE History** — 病歴聴取
+5. **Physical Assessment** — 身体評価
+6. **Instructions** — 指示
+7. **Reassurance** — 安心づけ
+8. **Transport** — 搬送
+
+## 使用技術
+
+| 技術 | 用途 |
+|---|---|
+| Web Speech API（SpeechRecognition） | リアルタイム音声認識 |
+| Web Speech API（SpeechSynthesis） | 患者役音声合成 |
+| Levenshtein距離（公開アルゴリズム, 1965） | 単語のファジーマッチング |
+| localStorage | アンケート回答の一時保存 |
+| HTML / CSS / Vanilla JavaScript | フロントエンド全般 |
+
+**推奨ブラウザ**：Google Chrome または Microsoft Edge（Web Speech API対応）
+
+## 表現選出の言語学的根拠
+
+- 10症候 × 20シナリオ = **200スクリプト**（延べ語数 約41,962語）のコーパスを独自構築
+- 共起分析により **Effect = log₂(観測値 / 期待値) ≥ 2.0** の表現を選出
+- 文部科学省中学校英語語彙リストに準拠した語彙レベル制限
+- 原則 **1文・8語以内** に整理し、臨床現場での即時発話を優先
+
+## プライバシー
+
+本アプリはすべてブラウザ上で動作します。音声データ・アンケート回答データはサーバーへ送信されず、端末のlocalStorageにのみ保存されます。
+
+## 作成者
+
+**Shunichiro Nakao, MD, MD, MSc, PhD**
+
+This project was supported by a grant from The Mitsubishi Foundation.
+
+## ライセンス
+
+本アプリのコードは研究・教育目的での使用を想定しています。
+Levenshtein距離アルゴリズムはパブリックドメイン（V.I. Levenshtein, 1965）です。
