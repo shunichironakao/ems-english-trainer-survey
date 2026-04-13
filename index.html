@@ -274,11 +274,16 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 .thanks-icon{font-size:3.5rem;margin-bottom:16px}
 .thanks-title{color:#fff;font-size:1.5rem;font-weight:700;margin-bottom:8px}
 .thanks-sub{color:#93c5fd;font-size:.88rem;margin-bottom:28px;line-height:1.6}
-.thanks-csv-box{margin-top:32px;padding:8px 0;text-align:center;opacity:.35}
-.thanks-csv-box:hover{opacity:.6}
-.thanks-csv-box p{color:#cbd5e1;font-size:.65rem;margin-bottom:6px;line-height:1.4}
-.btn-csv{background:transparent;color:#94a3b8;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:5px 14px;font-size:.65rem;font-weight:500;cursor:pointer}
 .btn-thanks-home{background:transparent;border:2px solid rgba(255,255,255,.5);color:#fff;border-radius:10px;padding:11px 24px;font-size:.88rem;font-weight:600;cursor:pointer;width:100%;max-width:380px}
+/* ===== CONSENT SCREEN ===== */
+#screen-consent{background:linear-gradient(160deg,#1a3a5c 0%,#2e6da4 100%);min-height:100vh;padding:30px 16px 40px;overflow-y:auto;display:none;flex-direction:column;align-items:center}
+.consent-box{background:rgba(255,255,255,.97);border-radius:16px;padding:24px 20px;max-width:440px;width:100%;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.consent-box h2{font-size:1.1rem;font-weight:700;color:#1a3a5c;margin-bottom:14px;text-align:center}
+.consent-body{font-size:.82rem;color:#374151;line-height:1.8;margin-bottom:20px}
+.consent-body strong{color:#1a3a5c}
+.consent-btns{display:flex;flex-direction:column;gap:10px}
+.btn-consent-yes{padding:14px;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-size:.95rem;font-weight:700;border-radius:12px;border:none;cursor:pointer;letter-spacing:.5px}
+.btn-consent-no{padding:10px;background:transparent;color:#94a3b8;font-size:.8rem;border:none;cursor:pointer;text-decoration:underline}
 /* Word-level breakdown */
 .breakdown-label{font-size:.72rem;color:#9ca3af;margin-top:8px;text-align:center;letter-spacing:.3px}
 .word-breakdown{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;justify-content:center}
@@ -546,21 +551,35 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
   <div style="margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.12);border-radius:12px;text-align:center">
     <p style="color:#93c5fd;font-size:.78rem;margin-bottom:10px">📋 引き続き簡単なアンケートにご協力をお願いします（無記名・約1分）</p>
     <div id="survey-countdown" style="color:#fff;font-size:.85rem;font-weight:600;margin-bottom:8px"></div>
-    <button onclick="showSurvey()" style="background:#fff;color:#1a3a5c;border:none;border-radius:10px;padding:10px 28px;font-size:.9rem;font-weight:700;cursor:pointer">アンケートに答える →</button>
+    <button onclick="showConsent()" style="background:#fff;color:#1a3a5c;border:none;border-radius:10px;padding:10px 28px;font-size:.9rem;font-weight:700;cursor:pointer">アンケートに答える →</button>
     <button onclick="skipSurvey()" style="background:transparent;border:none;color:#93c5fd;font-size:.75rem;cursor:pointer;display:block;margin:8px auto 0;text-decoration:underline">スキップ</button>
+  </div>
+</div>
+
+<!-- ===================== CONSENT ===================== -->
+<div id="screen-consent" class="screen">
+  <div class="consent-box">
+    <h2>📋 使用感調査へのご参加のお願い</h2>
+    <div class="consent-body">
+      本調査は、救急英語スピーキングトレーナー（EMS English Trainer）の有用性を評価することを目的とした研究です。<br><br>
+      <strong>■ 研究責任者</strong><br>中尾俊一郎（大阪大学大学院医学系研究科 外傷学講座）<br><br>
+      <strong>■ 調査内容</strong><br>アプリの使用感に関する6項目（5段階評価）および属性2項目（所要時間：約1分）<br><br>
+      <strong>■ 個人情報について</strong><br>本調査は無記名です。氏名・所属等の個人を特定できる情報は収集しません。回答データは統計的に処理され、個人が特定される形での公表は行いません。<br><br>
+      <strong>■ 結果の使用</strong><br>得られたデータは学会発表・論文等の学術目的に使用する場合があります。<br><br>
+      <strong>■ 参加の任意性</strong><br>参加は任意であり、回答しないことによる不利益は一切ありません。
+    </div>
+    <div class="consent-btns">
+      <button class="btn-consent-yes" onclick="consentYes()">上記に同意し、アンケートに回答する</button>
+      <button class="btn-consent-no" onclick="consentNo()">同意しない（ホームへ戻る）</button>
+    </div>
   </div>
 </div>
 
 <!-- ===================== SURVEY ===================== -->
 <div id="screen-survey" class="screen">
   <div class="survey-header">
-    <h2>📋 使用感アンケートにご協力ください</h2>
-    <p>EMS English Trainer [PROTOTYPE] の改善・研究のためのアンケートです</p>
-  </div>
-  <div style="background:rgba(255,255,255,.13);border-radius:12px;padding:12px 16px;margin-bottom:14px;font-size:.78rem;color:#e0f2fe;line-height:1.7">
-    ・本アンケートは<strong style="color:#fff">無記名</strong>です。個人が特定される情報は収集しません。<br>
-    ・回答結果は学会発表・論文等の研究目的に使用させていただく場合があります。<br>
-    ・回答は任意です。いつでもスキップできます。
+    <h2>📋 使用感アンケート</h2>
+    <p>全6問（5段階評価）＋属性2問 ＋ 自由記述</p>
   </div>
   <div class="survey-progress">
     <div class="survey-progress-bar"><div class="survey-progress-fill" id="survey-prog-fill" style="width:0%"></div></div>
@@ -656,10 +675,10 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
     <span class="q-num" style="background:#6b7280">属性</span>
     <div class="q-text">あなたの職種を教えてください</div>
     <div class="demo-options" id="demo-job">
-      <button class="demo-btn" onclick="selectDemo('job','救急救命士・救急隊員')">救急救命士・救急隊員</button>
       <button class="demo-btn" onclick="selectDemo('job','医師')">医師</button>
+      <button class="demo-btn" onclick="selectDemo('job','救急救命士')">救急救命士</button>
       <button class="demo-btn" onclick="selectDemo('job','看護師')">看護師</button>
-      <button class="demo-btn" onclick="selectDemo('job','学生')">学生</button>
+      <button class="demo-btn" onclick="selectDemo('job','その他医療従事者')">その他医療従事者</button>
       <button class="demo-btn" onclick="selectDemo('job','その他')">その他</button>
     </div>
   </div>
@@ -690,14 +709,10 @@ button{cursor:pointer;border:none;outline:none;font-family:inherit}
 
 <!-- ===================== THANKS ===================== -->
 <div id="screen-thanks" class="screen">
-  <div class="thanks-icon">📋</div>
-  <h2 class="thanks-title">アンケートにご協力ください</h2>
-  <p class="thanks-sub">引き続き別の症候でトレーニングを行い、<br>アンケートへのご回答をお願いします。</p>
+  <div class="thanks-icon">🙏</div>
+  <h2 class="thanks-title">ご回答ありがとうございました</h2>
+  <p class="thanks-sub">いただいたフィードバックはアプリの改善と<br>研究の発展に活用させていただきます。</p>
   <button class="btn-thanks-home" onclick="showSelect()">📋 別の症候でトレーニングを続ける</button>
-  <div class="thanks-csv-box">
-    <p>📥 研究担当者の方へ：この端末に蓄積された全回答データをCSVとしてダウンロードできます。</p>
-    <button class="btn-csv" onclick="downloadCSV()">📊 CSVダウンロード</button>
-  </div>
 </div>
 
 <script>
@@ -1367,7 +1382,7 @@ let state = {
    ===================================================== */
 function showScreen(id) {
   // Cancel survey countdown if navigating away from complete screen
-  if (id !== 'screen-complete' && id !== 'screen-survey' && state && state.surveyCountdown) {
+  if (id !== 'screen-complete' && id !== 'screen-consent' && id !== 'screen-survey' && state && state.surveyCountdown) {
     clearInterval(state.surveyCountdown);
     state.surveyCountdown = null;
   }
@@ -1661,7 +1676,7 @@ function showComplete() {
       cdEl.textContent = `${secs}秒後に自動的にアンケート画面に移ります`;
     } else {
       clearInterval(cdTimer);
-      showSurvey();
+      showConsent();
     }
   }, 1000);
   // Store timer so retry/home can cancel it
@@ -1737,6 +1752,19 @@ function showSurvey() {
   showScreen('screen-survey');
 }
 
+function showConsent() {
+  if (state.surveyCountdown) clearInterval(state.surveyCountdown);
+  showScreen('screen-consent');
+}
+
+function consentYes() {
+  showSurvey();
+}
+
+function consentNo() {
+  showSelect();
+}
+
 function skipSurvey() {
   if (state.surveyCountdown) clearInterval(state.surveyCountdown);
   showSelect();
@@ -1748,7 +1776,6 @@ function submitSurvey() {
   const errEl = document.getElementById('survey-error');
   if (missing.length > 0 || !surveyAnswers.job || !surveyAnswers.eng) {
     errEl.style.display = 'block';
-    // Highlight missing blocks
     missing.forEach(q => {
       const b = document.getElementById('qblock-' + q);
       if (b) b.style.borderLeft = '4px solid #ef4444';
@@ -1758,54 +1785,28 @@ function submitSurvey() {
   }
   errEl.style.display = 'none';
 
-  // Build response record
-  const record = {
-    timestamp:   new Date().toISOString(),
-    scenario:    state.scenario ? state.scenario.id : 'unknown',
-    score:       `${state.score}/${state.scenario ? state.scenario.phases.length : 8}`,
-    q1_ease:     surveyAnswers.q1,
-    q2_useful:   surveyAnswers.q2,
-    q3_validity: surveyAnswers.q3,
-    q4_feedback: surveyAnswers.q4,
-    q5_continue: surveyAnswers.q5,
-    q6_recommend:surveyAnswers.q6,
-    job:         surveyAnswers.job,
-    eng_exp:     surveyAnswers.eng,
-    comment:     document.getElementById('survey-comment').value.replace(/[\r\n]+/g,' ').trim()
-  };
+  // Submit to Google Forms
+  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfiJ4vXZu85g_4bWRSjhsElWzesXaiAaWqKlWZaKGwiTXhMAg/formResponse';
+  const formData = new URLSearchParams();
+  formData.append('entry.45870977',   '同意する');
+  formData.append('entry.2131035755', String(surveyAnswers.q1));
+  formData.append('entry.675079287',  String(surveyAnswers.q2));
+  formData.append('entry.941660820',  String(surveyAnswers.q3));
+  formData.append('entry.515102181',  String(surveyAnswers.q4));
+  formData.append('entry.1353905634', String(surveyAnswers.q5));
+  formData.append('entry.781654103',  String(surveyAnswers.q6));
+  formData.append('entry.1099293663', surveyAnswers.job);
+  formData.append('entry.392419657',  surveyAnswers.eng);
+  formData.append('entry.226724294',  document.getElementById('survey-comment').value.trim());
 
-  // Save to localStorage (accumulate multiple responses)
-  const stored = JSON.parse(localStorage.getItem('ems_survey_responses') || '[]');
-  stored.push(record);
-  localStorage.setItem('ems_survey_responses', JSON.stringify(stored));
+  fetch(FORM_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: formData.toString()
+  }).catch(() => {});
 
   showScreen('screen-thanks');
-}
-
-function downloadCSV() {
-  const stored = JSON.parse(localStorage.getItem('ems_survey_responses') || '[]');
-  if (stored.length === 0) { alert('データがありません。'); return; }
-
-  const headers = [
-    'timestamp','scenario','score',
-    'Q1_操作性','Q2_有用性','Q3_表現妥当性','Q4_FB有用性','Q5_継続意向','Q6_推奨意向',
-    '職種','英語経験','自由記述'
-  ];
-  const rows = stored.map(r => [
-    r.timestamp, r.scenario, r.score,
-    r.q1_ease, r.q2_useful, r.q3_validity, r.q4_feedback, r.q5_continue, r.q6_recommend,
-    r.job, r.eng_exp,
-    `"${(r.comment||'').replace(/"/g,'""')}"`
-  ].join(','));
-
-  const csv = '\uFEFF' + [headers.join(','), ...rows].join('\r\n');
-  const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `EMS_Survey_${new Date().toISOString().slice(0,10)}.csv`;
-  a.click();
-  URL.revokeObjectURL(url);
 }
 
 /* =====================================================
